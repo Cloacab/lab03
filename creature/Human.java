@@ -2,7 +2,9 @@ package creature;
 
 public class Human extends Creature {
 
-    constructor()
+    Human(){
+        this.shit = true;
+    }
 
     void setStatus(String status){
         super.status = status;
@@ -13,7 +15,7 @@ public class Human extends Creature {
     }
 
     void dream(){
-
+        
     }
 
 }

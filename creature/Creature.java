@@ -1,14 +1,21 @@
 package creature;
 
-private class Creature {
+public class Creature {
 
-    private constructor(String type, String name){
-        this.type = type;
-        this.name = name;
+    String type = "";
+    String name = "";
+    String status = "";
+
+    public Creature(String typ, String nam){
+        type = typ;
+        name = nam;
     }
 
-    {
-        
+    enum status{
+        HEALTHY,
+        INJURED,
+        BADLY_INJURED,
+        DEAD,
     }
 
     String getType(){
