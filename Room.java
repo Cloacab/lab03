@@ -25,4 +25,16 @@ private class Room {
         }
     }
 
+    int getDirt() {
+        return dirt;
+    }
+
+    void setDirt(int value){
+        this.dirt = value;
+    }
+
+    Object getThis(){
+        return this;
+    }
+
 }
