@@ -23,4 +23,11 @@ public class Shack {
     public String getPlace() {
         return place;
     }
+
+    public void getRooms() {
+        System.out.println("Rooms in the shack are:");
+        for (Room room: rooms ){
+            System.out.println(room.getName());
+        }
+    }
 }

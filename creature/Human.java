@@ -1,21 +1,36 @@
 package creature;
 
+import house.*;
+
 public class Human extends Creature {
 
-    Human(){
-        this.shit = true;
+    private Room room = null;
+    private boolean shit;
+
+
+    Human(String name, String type, Room room1){
+        super(name, type);
+        shit = true;
+        room = room1;
     }
 
-    void setStatus(String status){
+    public void setStatus(final String status) {
         super.status = status;
     }
 
-    void tread(Creature opp){
+    public void tread(final Creature opp) {
         opp.setStatus("Got tail injured");
     }
 
-    void dream(){
-        
+    public void dream() {
+
     }
 
+    public void changeRoom(final Room room1) {
+        room = room1;
+    }
+
+    public void getRoom(){
+        System.out.println("Chilipizdrik lives in room number: " + room.getName());
+    }
 }
