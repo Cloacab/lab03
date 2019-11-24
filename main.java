@@ -6,7 +6,7 @@ public class main{
         Creature beast = new Creature("beast", "tiger");
         Room newRoom = new Room("203a", 10, -2);
         Shack newShack = new Shack();
-        Human human = new Human(newRoom);
+        Human human = new Human("Dude", "human", newRoom);
         human.getRoom();
         newShack.addRoom(newRoom);
         System.out.println("Place where all the shit begans: " + newShack.getName() + ", situated at: " + newShack.getPlace());

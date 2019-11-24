@@ -6,7 +6,7 @@ public class Creature {
     String name = "";
     String status = "";
 
-    public Creature(String typ, String nam){
+    public Creature(String nam, String typ){
         type = typ;
         name = nam;
     }

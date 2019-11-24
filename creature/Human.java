@@ -8,7 +8,7 @@ public class Human extends Creature {
     private boolean shit;
 
 
-    Human(String name, String type, Room room1){
+    public Human(String name, String type, Room room1){
         super(name, type);
         shit = true;
         room = room1;
@@ -31,6 +31,6 @@ public class Human extends Creature {
     }
 
     public void getRoom(){
-        System.out.println("Chilipizdrik lives in room number: " + room.getName());
+        System.out.println(this.name + " lives in room number: " + room.getName());
     }
 }
