@@ -1,33 +1,42 @@
 package creature;
 
 import house.*;
+import status.*;
 
 public class Human extends Creature {
 
     private Room room = null;
-    private boolean shit;
+    private Double temperature = 36.6;
+    private String neckStatus = "Pretty good neck";
 
 
-    public Human(String name, String type, Room room1){
+    public Human(String name, String type, Room room){
         super(name, type);
-        shit = true;
-        room = room1;
+        this.room = room;
     }
 
-    public void setStatus(final String status) {
-        super.status = status;
+    // public void setStatus(Status status) {
+    //     this.status = status;
+    // }
+
+    public void setNeckStatus(String status){
+        this.neckStatus = status;
     }
 
-    public void tread(final Creature opp) {
-        opp.setStatus("Got tail injured");
+    public String getNeckStatus(){
+        return neckStatus;
+    }
+
+    public void tread(Creature opp) {
+        opp.setStatus(Status.BADLY_INJURED);
     }
 
     public void dream() {
 
     }
 
-    public void changeRoom(final Room room1) {
-        room = room1;
+    public void changeRoom(Room room) {
+        this.room = room;
     }
 
     public void getRoom(){

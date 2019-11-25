@@ -4,24 +4,24 @@ import java.util.*;
 
 public class Shack {
      
-    String name = "Typiachok";
-    String place = "Dryaning";
-    List<Room> rooms = new ArrayList<Room>();
+    private String name = "Typiachok";
+    private String place = "Dryaning";
+    private List<Room> rooms = new ArrayList<Room>();
 
     public void addRoom(Room room) {
-        rooms.add(room);
+        this.rooms.add(room);
     }
 
     public void removeRoom(Room room) {
-        rooms.remove(room);
+        this.rooms.remove(room);
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getPlace() {
-        return place;
+        return this.place;
     }
 
     public void getRooms() {

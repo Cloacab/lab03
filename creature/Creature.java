@@ -1,37 +1,32 @@
 package creature;
 
+import status.*;
+
 public class Creature {
 
-    String type = "";
-    String name = "";
-    String status = "";
+    private String type = "";
+    protected String name = "";
+    protected Status status = Status.HEALTHY;
 
-    public Creature(String nam, String typ){
-        type = typ;
-        name = nam;
+    public Creature(String name, String type){
+        this.type = type;
+        this.name = name;
     }
 
-    enum status{
-        HEALTHY,
-        INJURED,
-        BADLY_INJURED,
-        DEAD,
-    }
-
-    String getType(){
+    public String getType(){
         return type;
     }
 
-    String getName(){
+    public String getName(){
         return name;
     }
 
-    void setStatus(String status){
+    public void setStatus(Status status){
         this.status = status;
     }
 
-    String getStatus(){
-        return status;
+    public String getStatus(){
+        return status.toString();
     }
 
 }

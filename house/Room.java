@@ -2,29 +2,22 @@ package house;
 
 public class Room{
 
-    String name = "";
-    int price = 0;
-    int floor = 0;
+    private String name;
+    private int price;
+    private int floor;
 
-    public Room(String name1, int price1, int floor1){
-        name = name1;
-        price = price1;
-        floor = floor1;
+    public Room(String name, int price, int floor){
+        this.name = name;
+        this.price = price;
+        this.floor = floor;
     }
 
-    int dirt = 1;
-    int noise = 1;
-    int stink = 1;
-    int closeness = 1;
-    int bugs = 1;
-    int freshAir = 3;
-
-
-    // void getProperties(String[] args){
-    //     for (String property: properties){
-    //         System.out.println("The " + property + "level is: " + property.value);
-    //     }
-    // }
+    private int dirt = 1;
+    private int noise = 1;
+    private int stink = 1;
+    private int closeness = 1;
+    private int bugs = 1;
+    private int freshAir = 3;
 
     public int getDirt() {
         return dirt;
@@ -35,7 +28,7 @@ public class Room{
     }
 
     public void setDirt(int value){
-        dirt = value;
+        this.dirt = value;
     }
 
 

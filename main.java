@@ -1,8 +1,10 @@
 import house.*;
 import creature.*;
+import status.*;
 
 public class main{
     public static void main(String[] args) {
+        Status status;
         Creature beast = new Creature("beast", "tiger");
         Room newRoom = new Room("203a", 10, -2);
         Shack newShack = new Shack();
@@ -18,6 +20,9 @@ public class main{
         newShack.getRooms();
         newShack.removeRoom(newRoom);
         newShack.getRooms();
+        human.getStatus();
+        human.setStatus(Status.BADLY_INJURED);
+        human.getStatus();
 
     }
 
