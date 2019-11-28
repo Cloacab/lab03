@@ -9,6 +9,7 @@ public class main{
         Room newRoom = new Room("203a", 10, -2);
         Shack newShack = new Shack();
         Human human = new Human("Dude", "human", newRoom);
+        Rat rat = new Rat("Stinky", "beast", 10);
         human.getRoom();
         newShack.addRoom(newRoom);
         System.out.println("Place where all the shit begans: " + newShack.getName() + ", situated at: " + newShack.getPlace());
@@ -23,6 +24,9 @@ public class main{
         human.getStatus();
         human.setStatus(Status.BADLY_INJURED);
         human.getStatus();
+        rat.bite(human);
+        human.getStatus();
+        System.out.println("human healt:" + human.getHP());
 
     }
 

@@ -5,14 +5,15 @@ import status.*;
 public class Rat extends Creature{
 
     private int ugliness;
-    
-    Rat(String nam, String typ, int ugliness){
-        super(nam, typ);
+    private int damage = 10;
+     
+    public Rat(String name, String type, int ugliness){
+        super(name, type);
         this.ugliness = ugliness;
     }
 
-    public bite(Creature opp){
-        opp.setStatus(Status.INJURED);
+    public void bite(Creature opp){
+        opp.applyDamage(damage);
     }
 
 }

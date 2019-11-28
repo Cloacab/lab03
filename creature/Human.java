@@ -8,6 +8,7 @@ public class Human extends Creature {
     private Room room = null;
     private Double temperature = 36.6;
     private String neckStatus = "Pretty good neck";
+    private boolean sleeping = false;
 
 
     public Human(String name, String type, Room room){
@@ -32,7 +33,8 @@ public class Human extends Creature {
     }
 
     public void dream() {
-
+        //imaginary fights with rats
+        //wakeUp() in a sweat if died, else wakeUp() normaly
     }
 
     public void changeRoom(Room room) {
