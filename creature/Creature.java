@@ -4,9 +4,9 @@ import status.*;
 
 public class Creature {
 
-    private String type;
+    protected String type;
     protected String name;
-    protected Status status = Status.HEALTHY;
+    protected Status status = Status.GREAT;
     protected int HP = 100;
 
     public Creature(String name, String type){
@@ -37,10 +37,6 @@ public class Creature {
         }
     }
 
-    private void setHP(int value) {
-        this.HP = value;
-    }
-
     public int getHP(){
         return HP;
     }
@@ -53,8 +49,8 @@ public class Creature {
         this.status = status;
     }
 
-    public String getStatus(){
-        return status.toString();
+    public Status getStatus(){
+        return status;
     }
 
 }

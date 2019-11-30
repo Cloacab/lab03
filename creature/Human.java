@@ -9,7 +9,7 @@ public class Human extends Creature {
     private Double temperature = 36.6;
     private String neckStatus = "Pretty good neck";
     private boolean sleeping = false;
-
+    private int damage = 50;
 
     public Human(String name, String type, Room room){
         super(name, type);
@@ -29,10 +29,11 @@ public class Human extends Creature {
     }
 
     public void tread(Creature opp) {
-        opp.setStatus(Status.BADLY_INJURED);
+        opp.applyDamage(this.damage);
     }
 
     public void dream() {
+
         //imaginary fights with rats
         //wakeUp() in a sweat if died, else wakeUp() normaly
     }
@@ -41,7 +42,9 @@ public class Human extends Creature {
         this.room = room;
     }
 
-    public void getRoom(){
+    public String getRoom(){
         System.out.println(this.name + " lives in room number: " + room.getName());
+        return room.getName();
     }
+
 }

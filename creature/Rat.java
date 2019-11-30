@@ -1,19 +1,26 @@
 package creature;
 
 import status.*;
+import java.math.*;
 
-public class Rat extends Creature{
+public abstract class Rat extends Creature{
 
-    private int ugliness;
-    private int damage = 10;
-     
-    public Rat(String name, String type, int ugliness){
+    protected int ugliness;
+    protected int damage;
+
+    public Rat(String name, String type){
         super(name, type);
-        this.ugliness = ugliness;
     }
 
-    public void bite(Creature opp){
-        opp.applyDamage(damage);
+    public abstract void bite(Creature opp);
+
+    public String getName() {
+        return name;
+    }
+
+    protected int calculateDamage(double deviation){
+        int newDamage = (int)( Math.random()*this.damage + (Math.random()*this.damage * deviation - this.damage * deviation/2));
+        return newDamage;
     }
 
 }
