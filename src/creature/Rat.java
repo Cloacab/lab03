@@ -1,7 +1,5 @@
 package creature;
 
-import status.*;
-
 public class Rat extends Creature implements Fightable{
 
     private int ugliness;
@@ -20,5 +18,11 @@ public class Rat extends Creature implements Fightable{
     @Override
     public String getStatus() {
         return "The Rat" + this.status;
+    }
+
+    @Override
+    public void makeDreams() {
+        RatDream dream = new RatDream();
+        this.addDream(dream);
     }
 }

@@ -1,11 +1,9 @@
 package creature;
 
-import house.*;
-import status.*;
+import status.Status;
 
 public class Human extends Creature implements Fightable{
 
-    private Room room = null;
     private Double temperature = 36.6;
     private String neckStatus = "Pretty good neck";
     private boolean sleeping = false;
@@ -16,21 +14,8 @@ public class Human extends Creature implements Fightable{
         this.strength = strength;
     }
 
-    @Override
-    public void damage(Creature opp) {
-        opp.applyDamage(this.strength);
-    }
-
     public boolean canWalk() {
         return this.temperature < 38.5 && this.status != Status.BADLY_INJURED;
-    }
-
-    public void changeRoom(Room room) {
-        this.room = room;
-    }
-
-    public String getRoom(){
-        return this.name + " lives in room number: " + room.getName();
     }
 
     public void setTemperature(int temperature) {
@@ -38,7 +23,31 @@ public class Human extends Creature implements Fightable{
     }
 
     @Override
+    public void makeDreams() {
+        if (this.room == null) {
+            HumanDream dream = new HumanDream("Something");
+            dream.setOwner(this);
+            this.addDream(dream);
+            return;
+        }
+
+        for (Creature creature: room.getCreatures()) {
+            if (creature.getClass() != Rat.class) {
+                continue;
+            }
+            HumanDream dream = new HumanDream("Rat(");
+            dream.setOwner(this);
+            this.addDream(dream);
+        }
+    }
+
+    @Override
+    public void damage(Creature opp) {
+        opp.applyDamage(this.strength);
+    }
+
+    @Override
     public String getStatus() {
-        return String.format("The %s: %s", this.name, this.status);
+        return String.format("The %s: %s", this.name, this.status.name());
     }
 }

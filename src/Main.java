@@ -1,7 +1,7 @@
 import house.*;
 import creature.*;
 
-public class main{
+public class Main {
     public static void main(String[] args) {
         Shack shack = new Shack();
 
@@ -16,22 +16,33 @@ public class main{
         Room kRoom = shack.getRoomByName("150b");
 
         for (int i = 0; i < 6; i++) {
-            kRoom.addCreature(new Rat());
+            kRoom.addCreature(new Rat("Rat", i * 10));
         }
 
-        Human Kozlek = new Human("Doblaeb", 3);
+        Human Kozlek = new Human("Sergey", 3);
+        Kozlek.setRoom(kRoom);
+        kRoom.addCreature(Kozlek);
+        System.out.println(kRoom.getCreatures());
+        System.out.println(Kozlek.getRoom());
+        Kozlek.makeDreams();
 
         System.out.println("Однажды ночью...");
 
-        for(String dream: new String[] {"a", "b", "C"}) {
-            HumanDream tmpDream = new HumanDream(dream);
-            tmpDream.setOwner(Kozlek);
-            Kozlek.addDream(tmpDream);
-        }
+        System.out.println(Kozlek.dream());
+        System.out.println(Kozlek.dream());
+        System.out.println(Kozlek.dream());
 
-        System.out.println(Kozlek.dream());
-        System.out.println(Kozlek.dream());
-        System.out.println(Kozlek.dream());
+        Rat rat = (Rat) kRoom.getCreatures().get(0);
+        rat.damage(Kozlek);
+        rat.damage(Kozlek);
+        rat.damage(Kozlek);
+        rat.damage(Kozlek);
+        rat.damage(Kozlek);
+        rat.damage(Kozlek);
+        rat.damage(Kozlek);
+        rat.damage(Kozlek);
+        System.out.println(Kozlek.getHP());
+        System.out.println(Kozlek.getStatus());
 
     }
 

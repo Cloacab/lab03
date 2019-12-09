@@ -6,7 +6,7 @@ public class Shack {
      
     private String name = "Typiachok";
     private String place = "Dryaning";
-    private List<Room> rooms = new ArrayList<Room>();
+    private List<Room> rooms = new ArrayList<>();
 
     public void addRoom(Room room) {
         this.rooms.add(room);
@@ -14,6 +14,15 @@ public class Shack {
 
     public void removeRoom(Room room) {
         this.rooms.remove(room);
+    }
+
+    public Room getRoomByName(String name) {
+        for(Room room: this.rooms) {
+            if (room.getName().equals(name)) {
+                return room;
+            }
+        }
+        return null;
     }
 
     public String getName() {

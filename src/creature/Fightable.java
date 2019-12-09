@@ -1,5 +1,5 @@
 package creature;
 
 public interface Fightable {
-    public void damage(Creature opp);
+    void damage(Creature opp);
 }

@@ -1,6 +1,7 @@
 package creature;
 
-import status.*;
+import house.Room;
+import status.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Random;
 abstract public class Creature {
 
     private String type;
+    protected Room room = null;
     protected String name;
     protected Status status = Status.HEALTHY;
     protected int HP = 100;
@@ -28,6 +30,9 @@ abstract public class Creature {
     }
 
     public String dream() {
+        if (this.thoughts.size() == 0) {
+            return null;
+        }
         int tid = new Random().nextInt(this.thoughts.size());
         String dream = this.thoughts.get(tid).dream(this);
         this.thoughts.remove(tid);
@@ -35,20 +40,24 @@ abstract public class Creature {
     }
 
     public void applyDamage(int damage){
-        this.HP = this.HP - damage;
+        this.setHP(this.HP - damage);
+        this.updateStatus();
+    }
+
+    private void updateStatus() {
         if (this.HP <= 0){
             this.setStatus(Status.DEAD);
         }
-        if (this.HP <= 25){
+        else if (this.HP <= 25){
             this.setStatus(Status.BADLY_INJURED);
         }
-        if (this.HP <= 50){
+        else if (this.HP <= 50){
             this.setStatus(Status.INJURED);
         }
-        if (this.HP <= 75){
+        else if (this.HP <= 75){
             this.setStatus(Status.HEALTHY);
         }
-        if (this.HP <= 100){
+        else if (this.HP <= 100){
             this.setStatus(Status.GREAT);
         }
     }
@@ -69,6 +78,16 @@ abstract public class Creature {
         this.status = status;
     }
 
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public Room getRoom() {
+        return this.room;
+    }
+
     abstract public String getStatus();
+
+    abstract public void makeDreams();
 
 }
