@@ -62,6 +62,25 @@ abstract public class Creature {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o.getClass() != this.getClass()) {
+            return false;
+        }
+        Creature other = (Creature) o;
+        return other.name.equals(name);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s ", this.getClass(), this.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
+
     private void setHP(int value) {
         this.HP = value;
     }

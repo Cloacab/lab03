@@ -2,17 +2,16 @@ package creature;
 
 public class Rat extends Creature implements Fightable{
 
-    private int ugliness;
-    private int damage = 10;
+    private int strength = 10;
      
-    public Rat(String name, int ugliness){
+    public Rat(String name, int strength){
         super(name, "Rat");
-        this.ugliness = ugliness;
+        this.strength = strength;
     }
 
     @Override
     public void damage(Creature opp){
-        opp.applyDamage(damage);
+        opp.applyDamage(strength);
     }
 
     @Override

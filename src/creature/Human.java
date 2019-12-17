@@ -1,25 +1,20 @@
 package creature;
 
+import exceptions.AbilityException;
+import status.Position;
 import status.Status;
 
 public class Human extends Creature implements Fightable{
 
-    private Double temperature = 36.6;
-    private String neckStatus = "Pretty good neck";
-    private boolean sleeping = false;
+    private String neck = "good";
+    private boolean canWalk;
+    private Position pos;
     private int strength;
 
     public Human(String name, int strength){
         super(name, "Human");
         this.strength = strength;
-    }
-
-    public boolean canWalk() {
-        return this.temperature < 38.5 && this.status != Status.BADLY_INJURED;
-    }
-
-    public void setTemperature(int temperature) {
-        this.temperature = (double) Math.max(36, temperature);
+        this.pos = Position.DOWN;
     }
 
     @Override
@@ -35,10 +30,17 @@ public class Human extends Creature implements Fightable{
             if (creature.getClass() != Rat.class) {
                 continue;
             }
-            HumanDream dream = new HumanDream("Rat(");
+            HumanDream dream = new HumanDream(Rat.class);
             dream.setOwner(this);
             this.addDream(dream);
         }
+    }
+
+    public void standUp() throws AbilityException {
+        if (this.status == Status.DEAD) {
+            throw new AbilityException("Человек не может встать, так как ему хуево", this);
+        }
+        this.pos = Position.UP;
     }
 
     @Override
@@ -47,7 +49,23 @@ public class Human extends Creature implements Fightable{
     }
 
     @Override
+    public void applyDamage(int damage) {
+        super.applyDamage(damage);
+        if (this.HP <= 50) {
+            this.setNeck("BAD!");
+        }
+    }
+
+    @Override
     public String getStatus() {
-        return String.format("The %s: %s", this.name, this.status.name());
+        return String.format("The %s: %s", this.name, this.status);
+    }
+
+    public String getNeck() {
+        return neck;
+    }
+
+    public void setNeck(String neck) {
+        this.neck = neck;
     }
 }

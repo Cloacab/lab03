@@ -1,3 +1,4 @@
+import exceptions.AbilityException;
 import house.*;
 import creature.*;
 
@@ -16,10 +17,17 @@ public class Main {
         Room kRoom = shack.getRoomByName("150b");
 
         for (int i = 0; i < 6; i++) {
-            kRoom.addCreature(new Rat("Rat", i * 10));
+            kRoom.addCreature(new Rat("Rat", i * 100));
         }
 
-        Human Kozlek = new Human("Sergey", 3);
+        Human Kozlek = new Human("Kozlek", 3);
+        try {
+            Kozlek.standUp();
+            System.out.println("Nice)");
+        } catch (AbilityException e) {
+            System.out.println(e.getMessage());
+        }
+
         Kozlek.setRoom(kRoom);
         kRoom.addCreature(Kozlek);
         System.out.println(kRoom.getCreatures());
@@ -32,15 +40,19 @@ public class Main {
         System.out.println(Kozlek.dream());
         System.out.println(Kozlek.dream());
 
-        Rat rat = (Rat) kRoom.getCreatures().get(0);
+        int ind = kRoom.getCreatures().size();
+        Rat rat = (Rat) kRoom.getCreatures().get(ind-2);
         rat.damage(Kozlek);
-        rat.damage(Kozlek);
-        rat.damage(Kozlek);
-        rat.damage(Kozlek);
-        rat.damage(Kozlek);
-        rat.damage(Kozlek);
-        rat.damage(Kozlek);
-        rat.damage(Kozlek);
+        System.out.println(Kozlek.getStatus());
+
+        try {
+            Kozlek.standUp();
+            System.out.println("Nice)");
+        } catch (AbilityException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getTarget());
+        }
+
         System.out.println(Kozlek.getHP());
         System.out.println(Kozlek.getStatus());
 
