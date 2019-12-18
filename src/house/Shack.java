@@ -36,11 +36,15 @@ public class Shack {
         this.entry = new Entry();
     }
 
-    public void enter(Creature creature) throws BuildingException {
-        if (!this.entry.isDoorOpen) {
-            throw new BuildingException("Дверь закрыта");
+    public void enter(Creature creature) {
+        try {
+            if (!this.entry.isDoorOpen) {
+                throw new BuildingException("Дверь закрыта");
+            }
+            System.out.println(String.format("%s вошел в шак", creature.getName()));
+        } catch (BuildingException e) {
+            System.out.println(e.getMessage());
         }
-        System.out.println(String.format("%s вошел в шак", creature.getName()));
     }
 
     public void removeRoom(Room room) {

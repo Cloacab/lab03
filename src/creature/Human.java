@@ -38,7 +38,7 @@ public class Human extends Creature implements Fightable{
 
     public void standUp() throws AbilityException {
         if (this.status == Status.DEAD) {
-            throw new AbilityException("Человек не может встать, так как ему хуево", this);
+            throw new AbilityException("Человек не может встать, так как ему плохо", this);
         }
         this.pos = Position.UP;
     }
