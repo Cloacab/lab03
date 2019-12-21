@@ -1,9 +1,12 @@
 import exceptions.AbilityException;
+import exceptions.NotCreatureException;
 import house.*;
 import creature.*;
 
+import java.lang.reflect.Field;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Shack shack = new Shack();
 
         for (int i = 100; i < 300; i+=50) {
@@ -56,6 +59,20 @@ public class Main {
         System.out.println(Kozlek.getHP());
         System.out.println(Kozlek.getStatus());
 
+        try {
+            Kozlek.damage(null);
+        } catch (NotCreatureException e) {
+            System.out.println(e.getMessage());
+
+
+
+        /**
+         * Our example for Reflection API
+         * getting value of the "price" field
+         */
+        Class carClass = Car.class;
+        Field price = carClass.getField("price");
+        System.out.println(price.get(new Car()));
     }
 
 }

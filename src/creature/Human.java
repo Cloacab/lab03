@@ -1,6 +1,7 @@
 package creature;
 
 import exceptions.AbilityException;
+import exceptions.NotCreatureException;
 import status.Position;
 import status.Status;
 
@@ -44,7 +45,10 @@ public class Human extends Creature implements Fightable{
     }
 
     @Override
-    public void damage(Creature opp) {
+    public void damage(Creature opp) throws NotCreatureException {
+        if (opp == null) {
+            throw new NotCreatureException("Существо должно существовать");
+        }
         opp.applyDamage(this.strength);
     }
 
